@@ -9,6 +9,9 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 
 import com.khauminhduy.models.Session;
 import com.khauminhduy.services.SessionService;
@@ -63,18 +66,31 @@ class SessionTest {
 		List<Session> lessThan = sessionService.findBySessionLengthLessThan(45);
 		assertNotNull(lessThan);
 		assertTrue(lessThan.size() > 0);
-		
+
 		List<Session> lessThan2 = sessionService.findBySessionLengthLessThan(10);
 		assertEquals(0, lessThan2.size());
 	}
-	
+
 	@Test
 	void testJpaGreaterThan() {
 		List<Session> greaterThan = sessionService.findBySessionLengthGreaterThan(45);
 		assertTrue(greaterThan.size() > 0);
-		
+
 		List<Session> greaterThan2 = sessionService.findBySessionLengthGreaterThan(80);
 		assertEquals(0, greaterThan2.size());
+	}
+
+	@Test
+	void testPageable() {
+		Page<Session> sessionWithName = sessionService.getSessionWithName("S",
+				PageRequest.of(1, 5, Sort.by(Sort.Direction.DESC, "sessionLength")));
+		assertTrue(sessionWithName.getTotalElements() > 0);
+	}
+	
+	@Test
+	void testCustomRepository() {
+		List<Session> sessions = sessionService.customGetSessions();
+		assertTrue(sessions.size() > 0);
 	}
 
 }

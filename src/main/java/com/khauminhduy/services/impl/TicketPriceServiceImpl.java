@@ -46,4 +46,9 @@ public class TicketPriceServiceImpl implements TicketPriceService {
 		return ticketPriceRepository.getTicketsUnderPriceWithWorkShops(maxPrice);
 	}
 
+	@Override
+	public List<TicketPrice> namedFindTicketsByPricingCategoryName(String name) {
+		return ticketPriceRepository.namedFindTicketsByPricingCategoryName(name);
+	}
+
 }

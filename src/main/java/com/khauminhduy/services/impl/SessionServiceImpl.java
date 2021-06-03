@@ -3,6 +3,8 @@ package com.khauminhduy.services.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.khauminhduy.models.Session;
@@ -93,6 +95,16 @@ public class SessionServiceImpl implements SessionService {
 	@Override
 	public List<Session> findBySessionLengthGreaterThan(Integer sessionLength) {
 		return sessionRepository.findBySessionLengthGreaterThan(sessionLength);
+	}
+
+	@Override
+	public Page<Session> getSessionWithName(String name, Pageable pageable) {
+		return sessionRepository.getSessionWithName(name, pageable);
+	}
+
+	@Override
+	public List<Session> customGetSessions() {
+		return sessionRepository.customGetSessions();
 	}
 
 }

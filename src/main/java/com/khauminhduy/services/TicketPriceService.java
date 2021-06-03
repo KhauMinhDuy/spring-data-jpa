@@ -3,6 +3,8 @@ package com.khauminhduy.services;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.springframework.data.repository.query.Param;
+
 import com.khauminhduy.models.TicketPrice;
 
 public interface TicketPriceService {
@@ -18,4 +20,6 @@ public interface TicketPriceService {
 	List<TicketPrice> list();
 	
 	List<TicketPrice> getTicketsUnderPriceWithWorkShops(BigDecimal maxPrice);
+	
+	List<TicketPrice> namedFindTicketsByPricingCategoryName(@Param("name") String name);
 }

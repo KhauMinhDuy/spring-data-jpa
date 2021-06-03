@@ -2,6 +2,10 @@ package com.khauminhduy.services;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
+
 import com.khauminhduy.models.Session;
 
 public interface SessionService {
@@ -35,6 +39,10 @@ public interface SessionService {
 	List<Session> findBySessionLengthEquals(Integer sessionLength);
 
 	List<Session> findBySessionLengthLessThan(Integer sessionLength);
-	
+
 	List<Session> findBySessionLengthGreaterThan(Integer sessionLength);
+
+	List<Session> customGetSessions();
+
+	Page<Session> getSessionWithName(@Param("name") String name, Pageable pageable);
 }
