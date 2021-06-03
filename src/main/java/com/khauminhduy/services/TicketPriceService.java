@@ -1,5 +1,6 @@
 package com.khauminhduy.services;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.khauminhduy.models.TicketPrice;
@@ -15,4 +16,6 @@ public interface TicketPriceService {
 	TicketPrice find(Long id);
 	
 	List<TicketPrice> list();
+	
+	List<TicketPrice> getTicketsUnderPriceWithWorkShops(BigDecimal maxPrice);
 }

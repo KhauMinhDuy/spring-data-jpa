@@ -31,7 +31,26 @@ class SpeakerTest {
 		List<Speaker> name = speakerService.findByFirstNameAndLastName("Sergio", "Becker");
 		assertNotNull(name);
 		assertTrue(name.size() > 0);
-		assertEquals(name.get(0).getFirstName(), "Sergio");
-		
+		assertEquals("Sergio", name.get(0).getFirstName());
 	}
+
+	@Test
+	void testJpaIgnoreCase() {
+		List<Speaker> ignoreCase = speakerService.findByCompanyIgnoreCase("national bank");
+		assertTrue(ignoreCase.size() > 0);
+	}
+	
+	@Test
+	void testJpaOrderBy() {
+		List<Speaker> nameAsc = speakerService.findByFirstNameOrderByLastNameAsc("Sergio");
+		assertTrue(nameAsc.size() > 0);
+		assertEquals(1, nameAsc.size());
+	}
+	
+	@Test
+	void testJpaFirst() {
+		List<Speaker> firstName = speakerService.findFirstByFirstName("Sergio");
+		assertTrue(firstName.size() > 0);
+	}
+	
 }

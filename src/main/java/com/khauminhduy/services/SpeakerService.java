@@ -19,4 +19,10 @@ public interface SpeakerService {
 	List<Speaker> findByFirstNameAndLastName(String firstname, String lastname);
 
 	List<Speaker> findByFirstNameOrLastName(String firstname, String lastname);
+	
+	List<Speaker> findByCompanyIgnoreCase(String company);
+	
+	List<Speaker> findByFirstNameOrderByLastNameAsc(String firstname);
+	
+	List<Speaker> findFirstByFirstName(String firstname);
 }

@@ -50,4 +50,19 @@ public class SpeakerServiceImpl implements SpeakerService{
 		return speakerRepository.findByFirstNameOrLastName(firstname, lastname);
 	}
 
+	@Override
+	public List<Speaker> findByCompanyIgnoreCase(String company) {
+		return speakerRepository.findByCompanyIgnoreCase(company);
+	}
+
+	@Override
+	public List<Speaker> findByFirstNameOrderByLastNameAsc(String firstname) {
+		return speakerRepository.findByFirstNameOrderByLastNameAsc(firstname);
+	}
+
+	@Override
+	public List<Speaker> findFirstByFirstName(String firstname) {
+		return speakerRepository.findFirstByFirstName(firstname);
+	}
+
 }

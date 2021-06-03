@@ -1,5 +1,6 @@
 package com.khauminhduy.services.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,11 @@ public class TicketPriceServiceImpl implements TicketPriceService {
 	@Override
 	public List<TicketPrice> list() {
 		return ticketPriceRepository.findAll();
+	}
+
+	@Override
+	public List<TicketPrice> getTicketsUnderPriceWithWorkShops(BigDecimal maxPrice) {
+		return ticketPriceRepository.getTicketsUnderPriceWithWorkShops(maxPrice);
 	}
 
 }
